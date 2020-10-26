@@ -1,7 +1,8 @@
 import React from 'react';
+import CartWidget from './CartWidget'
 
 function NavBar (){
-return (
+return <>
    
 <div>
 <nav className="navbar navbar-expand-lg navbar-light bg-primary" >
@@ -18,11 +19,12 @@ return (
         <a className="nav-link" href="#">Contacto</a>
       </li>
       </ul>
-  </div>
+    </div>
+    <CartWidget />
 </nav>
 </div>
 
-)
+</>
 }
 
 export default NavBar;
