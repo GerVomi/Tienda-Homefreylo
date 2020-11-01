@@ -3,20 +3,20 @@ import React, {useState} from 'react'
 
 
 function ItemCount ({stock, initial, onAdd}) {
-const [itemChange, setItem] = useState (initial )
+const [itemChange, setItem] = useState (initial)
 
 
 
 
-function agregarItem(){
-    if(itemChange < 10){
+function handleAdd(){
+    if(itemChange < stock){
     setItem(itemChange + 1)
 }
 else {alert('Stock insuficiente')}
 }
 
-function restarItem(){
-    if(itemChange > 1){
+function handleRestar(){
+    if(itemChange > 0){
     setItem(itemChange - 1)
     }
     else {
@@ -28,10 +28,10 @@ function restarItem(){
 <div style={{ textAlign: 'center', border:'2px solid black'}} className="shop-item-count">
     <p>Stock:{stock}</p>
     <p>Item inicial:{initial}</p>
-    <button class="btn btn-primary" onClick={agregarItem}>+</button>
-    <button class="btn btn-primary" onClick={restarItem}> -</button>
+    <button class="btn btn-primary" onClick={handleAdd} disabled={ stock <= 1 ? true : false }>+</button>
+    <button class="btn btn-primary" onClick={handleRestar} disabled={ stock <= 1 ? true : false }> -</button>
     <p>Agregado = {itemChange}</p>
-    <button onClick = { ( ) => onAdd(itemChange) } className="btn btn-warning" type="button" >Agregar!  </button>     
+    <button onClick = { ( ) => onAdd(itemChange) } disabled={ stock <= 1 ? true : false }  className="btn btn-warning" type="button" >Agregar!  </button>     
 </div>
           </>
 }

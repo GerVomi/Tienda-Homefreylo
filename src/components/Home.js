@@ -16,11 +16,14 @@ function ItemListContainer (){
     function onAdd(item){
         
             return alert('Gracias por su compra de '+item+' producto(s)!')
-        
-        
-    }
-    return <div><ItemCount stock={10} initial={4} onAdd={onAdd} /></div>
     
+    }
+    return <>
+    
+    <div><ItemCount stock={0} initial={7} onAdd={onAdd} /></div>
+    <div><ItemCount stock={10} initial={7} onAdd={onAdd} /></div>
+    
+        </>
     
 }
 
