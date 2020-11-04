@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import ItemList from './ItemList'
-import ItemDetailContainer from './ItemDetailContainer'
 import ItemListDetail from './ItemListDetail'
 
-
-
-
-const itemTask = new Promise 
+const itemTaskDetail = new Promise 
 ((res)=>
     { setTimeout(()=>
         { let productos = [{
@@ -38,34 +33,21 @@ const itemTask = new Promise
     }
 )
 
-function Home (){
-    
-    return <><div style={{ textAlign: 'center', border:'2px solid black'}}>
-    <h3>BIENVENIDO A NUESTRA TIENDA!</h3>
-    </div>
-    
-    <ItemListContainer></ItemListContainer>
-    
-    
-    </>
-}
-
-function ItemListContainer (){
-
-    const [items, setItems] = useState([]);
+function ItemDetailContainer (){
+    const [it, setItems] = useState([]);
 
     useEffect( () => {
         console.log('Init-Home');
-        itemTask.then(res => {
+        itemTaskDetail.then(res => {
             setItems(res);
         });
     }, []);    
 
 return <>
         <div>
-            <ItemList item={items} />    
+            <ItemListDetail item={it} />    
         </div>
     </>
 }
 
-export default Home
+export default ItemDetailContainer

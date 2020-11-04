@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home'
+import ItemDetailContainer from './components/ItemDetailContainer'
 
 
 
@@ -12,7 +13,9 @@ function App() {
   return (
         <div>
         <NavBar></NavBar>
-        <Home ></Home>
+        <Home></Home>
+        <h2>ItemDetailContainer</h2>
+        <ItemDetailContainer></ItemDetailContainer>
         
         </div>
   );
