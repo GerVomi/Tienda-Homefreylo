@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import ItemListDetail from './ItemListDetail'
+import { useParams } from 'react-router-dom'
 
-const itemTaskDetail = new Promise 
-((res)=>
+const getItem = (id) =>{return new Promise
+    ((res,rej)=>
     { setTimeout(()=>
         { let productos = [{
            id: "1",
@@ -28,23 +29,33 @@ const itemTaskDetail = new Promise
             pictureUrl: "https://i.ibb.co/cQ5LfYd/006.jpg",
             price: 10
           }]
-         res(productos)
-        }, 2000)
+          if(productos){
+            res(productos.filter(producto => producto.id === id ));
+            console.log( id );
+        } else {
+            rej('Tarea Error');
+        }
+    }, 2000)
     }
 )
+}
+
+
 
 function ItemDetailContainer (){
     const [it, setItems] = useState([]);
+    const {id} = useParams()
 
     useEffect( () => {
-        console.log('Init-Home');
-        itemTaskDetail.then(res => {
+        
+        getItem(id).then(res => {
             setItems(res);
         });
-    }, []);    
+    }, [id]);    
 
 return <>
         <div>
+            <h1>ID: {id}</h1>
             <ItemListDetail item={it} />    
         </div>
     </>

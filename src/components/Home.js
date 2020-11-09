@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import ItemList from './ItemList'
-import ItemDetailContainer from './ItemDetailContainer'
-import ItemListDetail from './ItemListDetail'
 
 
 
@@ -53,9 +51,10 @@ function Home (){
 function ItemListContainer (){
 
     const [items, setItems] = useState([]);
+    
 
     useEffect( () => {
-        console.log('Init-Home');
+        
         itemTask.then(res => {
             setItems(res);
         });
