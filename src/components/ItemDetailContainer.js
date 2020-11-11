@@ -31,7 +31,7 @@ const getItem = (id) =>{return new Promise
           }]
           if(productos){
             res(productos.filter(producto => producto.id === id ));
-            console.log( id );
+            
         } else {
             rej('Tarea Error');
         }
