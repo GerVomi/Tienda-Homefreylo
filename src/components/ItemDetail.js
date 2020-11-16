@@ -20,8 +20,9 @@ useEffect (()=>{
 
 
     function onAdd(itemChange){
+       
         setKilled(true)
-        setItemCant(itemChange)
+        setItemCant( itemChange )
         
  }
     return <>

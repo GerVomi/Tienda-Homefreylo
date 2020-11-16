@@ -1,14 +1,17 @@
 import React from 'react';
 import CartWidget from '../CartWidget'
 import { NavLink} from 'react-router-dom'
+import { useCartContext } from '../../context/cartContext';
 
 const categorias = [{id:'1', name:'Categoria 01'},{id:'2', name:'Categoria 02'},{id:'3', name:'Categoria 3'}]
 
 function NavBar (){
+
+  const {cart} = useCartContext()
 return (
 
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <NavLink  className="navbar-brand" to="/">Tienda HomeFreylo</NavLink>
+<NavLink  className="navbar-brand" to="/">Tienda HomeFreylo </NavLink>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -36,7 +39,15 @@ return (
       </li>
     </ul>
    </div>
+   {cart.lenght}
    <CartWidget />
+   <span className="items-en-carrito">
+                    {cart.map(itemsAgregados => (
+                        <span key={itemsAgregados.id}>
+                            {Number(itemsAgregados.quantity)}
+                        </span>
+                    ))}
+                </span>
 </nav>
 
 )
